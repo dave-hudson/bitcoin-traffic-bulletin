@@ -1,0 +1,17 @@
+2015-01-20
+
+bitcoin_traffic_bulletin
+
+This software was designed to build and compile on Ubuntu 14.04 using gcc
+4.7.x.  It ought to be able to run on lots of other typtes of systems, but
+no attempt has been made (or will be made by the author) to do so :-)
+
+The code is freely available under an MIT-like license.
+
+It's written in C.
+
+
+Cheers,
+Dave
+dave@hashingit.com
+
