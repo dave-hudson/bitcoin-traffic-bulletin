@@ -1,7 +1,7 @@
 /*
  * btb.c
- *	Transaction processing simulation used for the hashingit.com article
- *	"Bitcoin Traffic Bulletin".
+ *	Transaction processing simulation used for the hashingit.com articles
+ *	"Bitcoin Traffic Bulletin" and "Bitcoin Traffic Bulletin (Revised)".
  *
  * Copyright (C) 2015 David Hudson
  *
@@ -253,11 +253,12 @@ static void output_results(void)
 
 	double cumulative_ratio = 0.0;
 	for (int i = smallest_bucket; i <= largest_bucket; i++) {
-		double r = (double)buckets[i];
+		double r = (double)buckets[i] / num_res;
+		double bucket_start = pow(10.0, (double)(i - (NEGATIVE_ORDERS * NUM_BUCKETS_PER_ORDER)) / (double)NUM_BUCKETS_PER_ORDER); 
+		double bucket_end = pow(10.0, (double)(i + 1 - (NEGATIVE_ORDERS * NUM_BUCKETS_PER_ORDER)) / (double)NUM_BUCKETS_PER_ORDER); 
 		cumulative_ratio += r;
-		printf("%d | %.6f | %.6f | %.6f\n",
-		       i, pow(10.0, (double)(i - (NEGATIVE_ORDERS * NUM_BUCKETS_PER_ORDER)) / (double)NUM_BUCKETS_PER_ORDER),
-		       r / num_res, cumulative_ratio / num_res);
+		printf("%d | %.6f | %.6f | %.6f | %.6f\n",
+		       i, bucket_start, r, r / (bucket_end - bucket_start), cumulative_ratio);
 	}
 }
 
